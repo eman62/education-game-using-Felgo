@@ -1,0 +1,78 @@
+import QtQuick 2.0
+import Felgo 3.0
+import QtMultimedia 5.0
+// EMPTY SCENE
+
+Scene {
+ id: alpha
+
+ Rectangle{
+ color: "#f0f8ff"
+ border.color: "black"
+ anchors.fill: parent.gameWindowAnchorItem
+
+
+
+ IconButton{
+     width:50
+     height: 30
+     icon: IconType.arrowleft
+     onClicked: {
+      var components = Qt.createComponent("levels.qml")
+      var window = components.createObject(gameWindow)
+      alpha.visible = false
+      window.show()
+
+  }
+}
+
+ Column{
+   anchors.centerIn: parent
+   spacing: 20
+   Text {
+       y:10
+       id: title
+       anchors.horizontalCenter: parent.horizontalCenter
+       font.pixelSize: 20
+       verticalAlignment: Text.AlignVCenter
+       horizontalAlignment: Text.AlignVCenter
+       text: "letters"
+       font.family: "Fancy font"
+       font.bold: true
+       styleColor: "#3626a2"
+       }
+
+
+   AppButton{
+       radius:20
+       text: "A"
+       flat: false
+       fontBold: true
+       textSize: 20
+       borderColor: "light blue"
+       borderWidth: 5
+       backgroundColorPressed: "red"
+       x:0
+       y:0
+       onClicked: s1.play()
+       }
+       //anchors.fill: parent
+
+
+   SoundEffect{
+   id:s1
+   source: "../recording/A.wav"
+   }
+
+
+
+
+ }
+
+
+
+
+
+ }
+
+}
